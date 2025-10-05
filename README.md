@@ -2,6 +2,31 @@
 
 An interactive web application for English vocabulary learning. It generates fill‑in‑the‑blank questions paired with COCO images and provides visual feedback for incorrect answers.
 
+<p align="center">
+  <img src="docs/assets/initial-question.png" alt="Initial question screen" width="49%">
+  <img src="docs/assets/result3.png"         alt="Result (incorrect answer) screen" width="49%">
+</p>
+<p align="center"><em>Left: Initial (Question) / Right: Result (Incorrect)</em></p>
+
+
+
+## How it works (Design intent)
+
+<p align="center">
+  <img src="docs/assets/figure-learning-flow.png" alt="Learner state transitions during error visualization" width="780">
+</p>
+
+This system couples **multimedia learning**, **cognitive load minimization**, and **error-based learning**.  
+When a learner answers a fill-in-the-blank item, the app compares the chosen option with the target and—if it’s wrong—**generates an error image** for the selected word. Placing the original image and the error image side-by-side creates a clear **visual conflict** that makes the misconception obvious and easier to revise **without relying on L1 labels**.
+
+**Flow (A–F in the figure):**
+1. **Initial perception (A)** – The item, image, and three options are shown contiguously to reduce split-attention.
+2. **Option selection (B)** – The learner forms a hypothesis; near-neighbor distractors (e.g., *hanging* vs. *hugging*) capture typical errors.
+3. **Misconception (C, t1→t2)** – The wrong form is tentatively encoded with the visual context.
+4. **Error visualization (D, t2→t3)** – An image for the wrong word induces cognitive conflict.
+5. **Error recognition (E)** – The visual contrast reveals the semantic mismatch (e.g., *hanging* ≠ the original *hugging* scene).
+6. **Conceptual reconstruction (F, t3→t4)** – The mapping is re-encoded toward the correct concept with less L1 dependence.
+
 
 ---
 
