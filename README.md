@@ -10,8 +10,8 @@
 </p>
 
 <p align="center">
-  <img src="docs/assets/initial-question.png" alt="Initial question screen" width="49%">
-  <img src="docs/assets/result3.png"         alt="Result (incorrect) screen" width="49%">
+  <img src="docs/assets/initial-question.png" alt="Initial question screen" height="420">
+  <img src="docs/assets/result3.png"         alt="Result (incorrect) screen" height="420">
 </p>
 <p align="center"><em>Left: Initial (Question) • Right: Result (Incorrect with error image)</em></p>
 
@@ -23,7 +23,7 @@
   <a href="CONTRIBUTING.md">Contributing</a>
 </div>
 
-# 📚 L-VEIGe (Learning-Vocabulary Error Image Generation) — Setup & Run (WSL/Windows + Linux/macOS)
+<!-- # 📚 L-VEIGe (Learning-Vocabulary Error Image Generation) — Setup & Run (WSL/Windows + Linux/macOS)
 
 An interactive web application for English vocabulary learning. It generates fill‑in‑the‑blank questions paired with COCO images and provides visual feedback for incorrect answers.
 
@@ -31,7 +31,7 @@ An interactive web application for English vocabulary learning. It generates fil
   <img src="docs/assets/initial-question.png" alt="Initial question screen" width="20%">
   <img src="docs/assets/result3.png"         alt="Result (incorrect answer) screen" width="20%">
 </p>
-<p align="center"><em>Left: Initial (Question) / Right: Result (Incorrect)</em></p>
+<p align="center"><em>Left: Initial (Question) / Right: Result (Incorrect)</em></p> -->
 
 
 
