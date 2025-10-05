@@ -1,0 +1,184 @@
+<!-- templates/question.html - コンパクト化完全版 -->
+{% extends "base.html" %}
+
+{% block title %}L-VEIGe Question {{ question_number }} - Learning Vocabulary Error Image Generation{% endblock %}
+
+{% block content %}
+<!-- システムタイトル -->
+<div class="header">
+    <h1>L-VEIGe_Learning Vocabulary Error Image Generation</h1>
+    <p>Interactive English vocabulary learning with visual feedback</p>
+</div>
+
+<!-- 進捗表示 -->
+<div class="card">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+        <span>Progress: {{ session_info.current_question + 1 }} / {{ session_info.total_questions }}</span>
+        <span>{{ session_info.progress_rate }}%</span>
+    </div>
+    <div class="progress-bar">
+        <div class="progress-fill" style="width: {{ session_info.progress_rate }}%"></div>
+    </div>
+</div>
+
+<!-- 問題表示 -->
+<div class="card">
+    {% if question %}
+    
+    <!-- Question Number -->
+    <div style="text-align: center; margin-bottom: 20px;">
+        <h2 style="color: #667eea; font-size: 1.8em; margin-bottom: 10px;">Question No.{{ question_number }}</h2>
+    </div>
+    
+    <!-- Original Image Display -->
+    <div style="text-align: center; margin-bottom: 30px;">
+        <img src="{{ url_for('static', filename='images3/' + (question.image_id|string).zfill(12) + '.jpg') }}" 
+             alt="Question Image" class="question-image" 
+             style="max-width: 400px; height: auto; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);"
+             onerror="this.src='{{ url_for('static', filename='placeholder.jpg') }}'">
+    </div>
+
+    <!-- Question Text -->
+    <div style="margin: 30px 0; padding: 20px; background: #f8f9ff; border-radius: 10px; border-left: 4px solid #667eea;">
+        <div style="font-size: 1.3em; line-height: 1.8; color: #333; text-align: center;">
+            {% for token in question.blankquestion %}
+                {% if token == "()" %}
+                    <span style="background: #667eea; color: white; padding: 8px 16px; border-radius: 5px; font-weight: bold; margin: 0 2px;">( )</span>
+                {% else %}
+                    {{ token }}
+                {% endif %}
+                {% if not loop.last %} {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Answer Choices Form -->
+    <form id="choiceForm" method="POST" action="{{ url_for('process_answer') }}">
+        <input type="hidden" name="qid" value="{{ question.qid }}">
+        
+        <!-- Choice Selection Area -->
+        <div class="radio-group" style="display: flex; flex-direction: column; gap: 0.3rem; margin: 30px auto; 
+                                        max-width: 350px; align-items: stretch;">
+            {% for choice in question.shuffled_choices %}
+            <label class="radio-option" 
+                   style="background: #f8f9ff; padding: 0.25rem 0.5rem; border-radius: 4px; width: 100%; 
+                          display: flex; align-items: center; gap: 0.3rem; cursor: pointer; 
+                          transition: all 0.2s; border: 1px solid #e8ecff; box-sizing: border-box; 
+                          min-height: 28px;">
+                <input type="radio" name="choice" value="{{ choice }}" 
+                       style="accent-color: #3366ff; margin: 0; width: 12px; height: 12px;" 
+                       onchange="enableGoButton()">
+                <span style="flex: 1; font-size: 14px; line-height: 1.1; font-weight: 400;">{{ choice }}</span>
+            </label>
+            {% endfor %}
+        </div>
+
+        <!-- Go Button -->
+        <div style="text-align: center; margin-top: 1.5rem;">
+            <button type="submit" id="goButton" class="submit-button" 
+                    style="background: #6c63ff; color: white; border: none; padding: 0.6rem 1.5rem; 
+                           border-radius: 16px; font-size: 14px; cursor: pointer; transition: all 0.3s; 
+                           font-weight: 500;" 
+                    disabled>
+                Go →
+            </button>
+        </div>
+    </form>
+
+    <!-- Question Information -->
+    <div style="text-align: center; margin-top: 30px; padding: 15px; background: #f0f0f0; border-radius: 8px;">
+        <p style="color: #666; font-size: 0.9em; margin: 0;">
+            <strong>Part of Speech:</strong> {{ question.pos|title }} | 
+            <strong>Difficulty:</strong> {{ question.cefr }}
+        </p>
+    </div>
+
+    {% else %}
+    <div class="error">
+        Failed to load question.
+    </div>
+    {% endif %}
+</div>
+
+<script>
+// 選択肢が選択されたときにGoボタンを有効化
+function enableGoButton() {
+    const goButton = document.getElementById('goButton');
+    const selectedChoice = document.querySelector('input[name="choice"]:checked');
+    
+    if (selectedChoice) {
+        goButton.disabled = false;
+        goButton.style.opacity = '1';
+        goButton.style.cursor = 'pointer';
+        goButton.style.background = '#6c63ff';
+    }
+}
+
+// コンパクトなStreamlit風インタラクション
+document.addEventListener('DOMContentLoaded', function() {
+    const radioOptions = document.querySelectorAll('.radio-option');
+    const goButton = document.getElementById('goButton');
+    
+    // 初期状態でGoボタンを無効化
+    goButton.disabled = true;
+    goButton.style.opacity = '0.4';
+    goButton.style.cursor = 'not-allowed';
+    goButton.style.background = '#cccccc';
+    
+    // 各選択肢にホバー効果とクリック効果を追加
+    radioOptions.forEach(function(option) {
+        const radio = option.querySelector('input[type="radio"]');
+        
+        // ホバー効果（より繊細に）
+        option.addEventListener('mouseenter', function() {
+            if (!radio.checked) {
+                this.style.background = '#f0f4ff';
+                this.style.borderColor = '#d0d8ff';
+                this.style.transform = 'translateY(-1px)';
+            }
+        });
+        
+        option.addEventListener('mouseleave', function() {
+            if (!radio.checked) {
+                this.style.background = '#f8f9ff';
+                this.style.borderColor = '#e8ecff';
+                this.style.transform = 'translateY(0)';
+            }
+        });
+        
+        // 選択時の効果
+        radio.addEventListener('change', function() {
+            // 全ての選択肢をリセット
+            radioOptions.forEach(function(opt) {
+                opt.style.background = '#f8f9ff';
+                opt.style.borderColor = '#e8ecff';
+                opt.style.fontWeight = '400';
+                opt.style.transform = 'translateY(0)';
+            });
+            
+            // 選択された選択肢を強調
+            if (this.checked) {
+                option.style.background = '#e8f0ff';
+                option.style.borderColor = '#3366ff';
+                option.style.fontWeight = '500';
+            }
+        });
+    });
+    
+    // Goボタンのホバー効果
+    goButton.addEventListener('mouseenter', function() {
+        if (!this.disabled) {
+            this.style.background = '#5548ff';
+            this.style.transform = 'translateY(-1px)';
+        }
+    });
+    
+    goButton.addEventListener('mouseleave', function() {
+        if (!this.disabled) {
+            this.style.background = '#6c63ff';
+            this.style.transform = 'translateY(0)';
+        }
+    });
+});
+</script>
+{% endblock %}

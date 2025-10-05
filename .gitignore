@@ -1,0 +1,69 @@
+# --- Environment variables / secrets ---
+.env
+.env.local
+.env.*
+*.env
+
+# --- Databases ---
+*.db
+*.sqlite
+*.sqlite3
+
+# --- Python caches / compiled ---
+__pycache__/
+*.py[cod]
+*.so
+.Python
+
+# --- Virtual environments ---
+.venv/
+venv/
+ENV/
+env/
+env.bak/
+venv.bak/
+
+# --- Build / packaging / tooling ---
+build/
+dist/
+*.egg-info/
+.mypy_cache/
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# --- Runtime / generated outputs ---
+generated_images/
+*.log
+
+# --- Datasets / large binaries (keep folder only) ---
+static/images3/**
+!static/images3/.gitkeep
+
+# --- IDE / editors ---
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# --- OS junk ---
+.DS_Store
+Thumbs.db
+
+# --- Backups ---
+*.backup
+*.bak
+
+# --- MkDocs (local site build) ---
+site/
+.venv*/
+static/images3/**
+!static/images3/.gitkeep
+site/
+cat >> .gitignore <<'EOF'
+.venv*/
+static/images3/**
+!static/images3/.gitkeep
+site/
+

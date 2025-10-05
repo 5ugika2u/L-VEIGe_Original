@@ -1,0 +1,206 @@
+{
+  "info": {
+    "description": "COCO 2017 Dataset",
+    "url": "http://cocodataset.org",
+    "version": "1.0",
+    "year": 2017,
+    "contributor": "COCO Consortium",
+    "date_created": "2017/09/01"
+  },
+  "licenses": [
+    {
+      "url": "http://creativecommons.org/licenses/by-nc-sa/2.0/",
+      "id": 1,
+      "name": "Attribution-NonCommercial-ShareAlike License"
+    },
+    {
+      "url": "http://creativecommons.org/licenses/by-nc/2.0/",
+      "id": 2,
+      "name": "Attribution-NonCommercial License"
+    },
+    {
+      "url": "http://creativecommons.org/licenses/by-nc-nd/2.0/",
+      "id": 3,
+      "name": "Attribution-NonCommercial-NoDerivs License"
+    },
+    {
+      "url": "http://creativecommons.org/licenses/by/2.0/",
+      "id": 4,
+      "name": "Attribution License"
+    },
+    {
+      "url": "http://creativecommons.org/licenses/by-sa/2.0/",
+      "id": 5,
+      "name": "Attribution-ShareAlike License"
+    },
+    {
+      "url": "http://creativecommons.org/licenses/by-nd/2.0/",
+      "id": 6,
+      "name": "Attribution-NoDerivs License"
+    },
+    {
+      "url": "http://flickr.com/commons/usage/",
+      "id": 7,
+      "name": "No known copyright restrictions"
+    },
+    {
+      "url": "http://www.usa.gov/copyright.shtml",
+      "id": 8,
+      "name": "United States Government Work"
+    }
+  ],
+  "images": [
+    {
+      "license": 3,
+      "file_name": "000000297578.jpg",
+      "coco_url": "http://images.cocodataset.org/val2017/000000297578.jpg",
+      "height": 281,
+      "width": 500,
+      "date_captured": "2013-11-14 16:38:34",
+      "flickr_url": "http://farm5.staticflickr.com/4067/4416179995_0dcfcce95a_z.jpg",
+      "id": 297578
+    },
+    {
+      "license": 1,
+      "file_name": "000000284445.jpg",
+      "coco_url": "http://images.cocodataset.org/val2017/000000284445.jpg",
+      "height": 594,
+      "width": 640,
+      "date_captured": "2013-11-16 16:02:44",
+      "flickr_url": "http://farm6.staticflickr.com/5247/5327232397_160df9c196_z.jpg",
+      "id": 284445
+    },
+    {
+      "license": 1,
+      "file_name": "000000017379.jpg",
+      "coco_url": "http://images.cocodataset.org/val2017/000000017379.jpg",
+      "height": 640,
+      "width": 478,
+      "date_captured": "2013-11-15 01:16:56",
+      "flickr_url": "http://farm6.staticflickr.com/5123/5316824279_9f0a0584c7_z.jpg",
+      "id": 17379
+    },
+    {
+      "license": 1,
+      "file_name": "000000460147.jpg",
+      "coco_url": "http://images.cocodataset.org/val2017/000000460147.jpg",
+      "height": 424,
+      "width": 640,
+      "date_captured": "2013-11-17 19:36:09",
+      "flickr_url": "http://farm9.staticflickr.com/8457/8053677163_d4c8f416be_z.jpg",
+      "id": 460147
+    },
+    {
+      "license": 3,
+      "file_name": "000000167540.jpg",
+      "coco_url": "http://images.cocodataset.org/val2017/000000167540.jpg",
+      "height": 427,
+      "width": 640,
+      "date_captured": "2013-11-16 04:09:03",
+      "flickr_url": "http://farm6.staticflickr.com/5220/5539796199_99928e0ed0_z.jpg",
+      "id": 167540
+    },
+    {
+      "license": 3,
+      "file_name": "000000365745.jpg",
+      "coco_url": "http://images.cocodataset.org/val2017/000000365745.jpg",
+      "height": 480,
+      "width": 640,
+      "date_captured": "2013-11-17 18:27:38",
+      "flickr_url": "http://farm9.staticflickr.com/8251/8652543109_089beff86c_z.jpg",
+      "id": 365745
+    },
+    {
+      "license": 4,
+      "file_name": "000000064084.jpg",
+      "coco_url": "http://images.cocodataset.org/val2017/000000064084.jpg",
+      "height": 436,
+      "width": 640,
+      "date_captured": "2013-11-25 11:04:34",
+      "flickr_url": "http://farm9.staticflickr.com/8482/8219102302_a64732337b_z.jpg",
+      "id": 64084
+    },
+    {
+      "license": 3,
+      "file_name": "000000117197.jpg",
+      "coco_url": "http://images.cocodataset.org/val2017/000000117197.jpg",
+      "height": 466,
+      "width": 640,
+      "date_captured": "2013-11-24 06:18:29",
+      "flickr_url": "http://farm6.staticflickr.com/5308/5597908661_862590802b_z.jpg",
+      "id": 117197
+    },
+    {
+      "license": 2,
+      "file_name": "000000328959.jpg",
+      "coco_url": "http://images.cocodataset.org/val2017/000000328959.jpg",
+      "height": 500,
+      "width": 308,
+      "date_captured": "2013-11-15 12:07:06",
+      "flickr_url": "http://farm1.staticflickr.com/85/268521667_4a3057c744_z.jpg",
+      "id": 328959
+    },
+    {
+      "license": 1,
+      "file_name": "000000182923.jpg",
+      "coco_url": "http://images.cocodataset.org/val2017/000000182923.jpg",
+      "height": 500,
+      "width": 375,
+      "date_captured": "2013-11-23 05:36:42",
+      "flickr_url": "http://farm1.staticflickr.com/64/180556106_eaa7b854bc_z.jpg",
+      "id": 182923
+    }
+  ],
+  "annotations": [
+    {
+      "image_id": 17379,
+      "id": 100348,
+      "caption": "A flat screen TV adorns a bathroom mirror."
+    },
+    {
+      "image_id": 297578,
+      "id": 199935,
+      "caption": "Man in tan suit walking down a city street lighting a cigarette."
+    },
+    {
+      "image_id": 328959,
+      "id": 406557,
+      "caption": "A bathroom decorated in black and white. "
+    },
+    {
+      "image_id": 167540,
+      "id": 413112,
+      "caption": "A small engine plane flying over in the blue sky."
+    },
+    {
+      "image_id": 284445,
+      "id": 216525,
+      "caption": "Pedestrians walking on a sidewalk by a badly tipped traffic light"
+    },
+    {
+      "image_id": 365745,
+      "id": 504974,
+      "caption": "A black bomb squad truck driving down a  road."
+    },
+    {
+      "image_id": 460147,
+      "id": 650391,
+      "caption": "A busy highway is being viewed from a distance."
+    },
+    {
+      "image_id": 117197,
+      "id": 474479,
+      "caption": "A woman sitting on the sidewalk talking on her cell phone. "
+    },
+    {
+      "image_id": 182923,
+      "id": 718982,
+      "caption": "A woman jumping in the air on the tennis court"
+    },
+    {
+      "image_id": 64084,
+      "id": 811260,
+      "caption": "a plate with some pieces of bread on it "
+    }
+  ]
+}

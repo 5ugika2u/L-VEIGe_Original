@@ -1,0 +1,128 @@
+
+<!-- templates/admin.html - Admin Dashboard -->
+{% extends "base.html" %}
+
+{% block title %}Admin Dashboard - Vocabulary Learning System{% endblock %}
+
+{% block extra_head %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{% endblock %}
+
+{% block content %}
+<div class="header">
+    <h1>⚙️ System Administration</h1>
+    <p>Vocabulary Learning System Statistics and Management</p>
+</div>
+
+<div class="card">
+    <h2>📊 System Statistics</h2>
+    <button onclick="loadStats()" class="btn" style="margin-bottom: 20px;">
+        Load Statistics
+    </button>
+    
+    <div id="stats-container">
+        <p>Click "Load Statistics" to display the latest system statistics.</p>
+    </div>
+</div>
+
+<div class="card">
+    <h2>🔧 Management Functions</h2>
+    <div style="display: grid; gap: 15px; max-width: 400px;">
+        <button onclick="clearCache()" class="btn btn-secondary">
+            🗑️ Clear Cache
+        </button>
+        <button onclick="cleanupImages()" class="btn btn-secondary">
+            🖼️ Cleanup Invalid Images
+        </button>
+        <button onclick="exportData()" class="btn btn-secondary">
+            📤 Export Data
+        </button>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+async function loadStats() {
+    try {
+        const response = await fetch('/admin/stats');
+        const data = await response.json();
+        
+        if (data.error) {
+            document.getElementById('stats-container').innerHTML = 
+                `<div class="error">${data.error}</div>`;
+            return;
+        }
+        
+        let html = '<div class="stats-grid">';
+        
+        // Question statistics
+        if (data.question_stats) {
+            html += `
+                <div class="stat-card">
+                    <div class="stat-number">${data.question_stats.total_vocabulary}</div>
+                    <div class="stat-label">Total Vocabulary</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">${data.question_stats.total_captions}</div>
+                    <div class="stat-label">Total Captions</div>
+                </div>
+            `;
+        }
+        
+        // Image statistics
+        if (data.image_stats) {
+            html += `
+                <div class="stat-card">
+                    <div class="stat-number">${data.image_stats.total_generated_images || 0}</div>
+                    <div class="stat-label">Generated Images</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">${data.image_stats.total_storage_size_mb || 0}MB</div>
+                    <div class="stat-label">Storage Used</div>
+                </div>
+            `;
+        }
+        
+        html += '</div>';
+        
+        // Detailed statistics
+        if (data.question_stats && data.question_stats.by_pos) {
+            html += '<h3 style="margin-top: 30px;">Vocabulary by Part of Speech</h3>';
+            html += '<div style="display: grid; gap: 10px; margin-top: 15px;">';
+            for (const [pos, count] of Object.entries(data.question_stats.by_pos)) {
+                html += `
+                    <div style="background: #f0f0f0; padding: 10px; border-radius: 5px; display: flex; justify-content: space-between;">
+                        <span>${pos}</span>
+                        <span>${count}</span>
+                    </div>
+                `;
+            }
+            html += '</div>';
+        }
+        
+        document.getElementById('stats-container').innerHTML = html;
+        
+    } catch (error) {
+        document.getElementById('stats-container').innerHTML = 
+            `<div class="error">Failed to load statistics: ${error.message}</div>`;
+    }
+}
+
+function clearCache() {
+    if (confirm('Clear system cache?')) {
+        alert('Cache clearing function is under development.');
+    }
+}
+
+function cleanupImages() {
+    if (confirm('Clean up invalid image files?')) {
+        alert('Image cleanup function is under development.');
+    }
+}
+
+function exportData() {
+    alert('Data export function is under development.');
+}
+</script>
+{% endblock %}

@@ -1,0 +1,108 @@
+<!-- ================================== -->
+<!-- templates/session_complete.html - Session Complete Page -->
+<!-- ================================== -->
+{% extends "base.html" %}
+
+{% block title %}Session Complete - Vocabulary Learning System{% endblock %}
+
+{% block content %}
+<div class="header">
+    <h1>🎊 Session Complete!</h1>
+    <p>Nice work, {{ username }}!</p>
+</div>
+
+<!-- Session Results -->
+<div class="card">
+    <h2 style="text-align: center; margin-bottom: 30px; color: #333;">📊 Results</h2>
+    
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-number">{{ session_info.answered_questions }}</div>
+            <div class="stat-label">Questions Answered</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">{{ session_info.total_questions }}</div>
+            <div class="stat-label">Total Questions</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">{{ session_info.progress_rate }}%</div>
+            <div class="stat-label">Completion Rate</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">{{ session_info.mode|title }}</div>
+            <div class="stat-label">Learning Mode</div>
+        </div>
+    </div>
+
+    <div style="background: #f8f9ff; padding: 20px; border-radius: 10px; margin: 20px 0; text-align: center;">
+        <p><strong>Session Settings:</strong> {{ session_info.pos_filter|title }} ({{ session_info.cefr_filter }})</p>
+    </div>
+</div>
+
+<!-- Overall Statistics -->
+{% if user_stats %}
+<div class="card">
+    <h2 style="text-align: center; margin-bottom: 30px; color: #333;">📈 Your Learning Statistics</h2>
+    
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-number">{{ user_stats.basic.total_questions }}</div>
+            <div class="stat-label">Total Attempts</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">{{ user_stats.basic.correct_answers }}</div>
+            <div class="stat-label">Correct Answers</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">
+                {% if user_stats.basic.total_questions > 0 %}
+                {{ ((user_stats.basic.correct_answers / user_stats.basic.total_questions) * 100)|round|int }}%
+                {% else %}
+                0%
+                {% endif %}
+            </div>
+            <div class="stat-label">Accuracy</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">{{ user_stats.basic.total_sessions }}</div>
+            <div class="stat-label">Sessions Completed</div>
+        </div>
+    </div>
+
+    <!-- CEFR Breakdown -->
+    {% if user_stats.by_cefr %}
+    <div style="margin-top: 30px;">
+        <h3 style="text-align: center; margin-bottom: 20px;">Performance by CEFR Level</h3>
+        <div style="display: grid; gap: 10px;">
+            {% for cefr, stats in user_stats.by_cefr.items() %}
+            <div style="background: #f0f0f0; padding: 15px; border-radius: 8px; display: flex; justify-content: space-between;">
+                <span><strong>{{ cefr }}:</strong></span>
+                <span>{{ stats.correct }}/{{ stats.attempted }} 
+                    ({{ ((stats.correct / stats.attempted) * 100)|round|int if stats.attempted > 0 else 0 }}%)</span>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endif %}
+
+<!-- Actions -->
+<div class="card" style="text-align: center;">
+    <h3 style="margin-bottom: 20px;">What would you like to do next?</h3>
+    
+    <div style="display: grid; gap: 15px; max-width: 400px; margin: 0 auto;">
+        <a href="{{ url_for('login_page') }}" class="btn">
+            🔄 Start a New Session
+        </a>
+        
+        <a href="{{ url_for('login_page') }}" class="btn btn-secondary">
+            📚 Practice in Review Mode
+        </a>
+        
+        <button onclick="window.location.reload()" class="btn" style="background: #74b9ff;">
+            📊 Refresh Stats
+        </button>
+    </div>
+</div>
+{% endblock %}

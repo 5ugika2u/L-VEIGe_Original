@@ -1,0 +1,25 @@
+<!-- ================================== -->
+<!-- templates/error.html - エラー画面 -->
+<!-- ================================== -->
+{% extends "base.html" %}
+
+{% block title %}エラー - 語彙学習システム{% endblock %}
+
+{% block content %}
+<div class="header">
+    <h1>⚠️ エラーが発生しました</h1>
+    <p>申し訳ございません。問題が発生しました。</p>
+</div>
+
+<div class="card">
+    <div class="error" style="text-align: center;">
+        <h3>{{ error or "不明なエラーが発生しました" }}</h3>
+    </div>
+    
+    <div style="text-align: center; margin-top: 30px;">
+        <a href="{{ url_for('login_page') }}" class="btn">
+            🏠 ホームに戻る
+        </a>
+    </div>
+</div>
+{% endblock %}

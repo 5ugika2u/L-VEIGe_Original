@@ -1,0 +1,71 @@
+<!-- ================================== -->
+<!-- templates/login.html - 改善されたログイン画面 -->
+<!-- ================================== -->
+{% extends "base.html" %}
+
+{% block title %}L-VEIGe - Learning Vocabulary Error Image Generation{% endblock %}
+
+{% block content %}
+<div class="header">
+    <h1>L-VEIGe_Learning Vocabulary Error Image Generation</h1>
+    <p>Interactive English vocabulary learning with visual feedback</p>
+</div>
+
+<div class="card">
+    {% if error %}
+    <div class="error">
+        {{ error }}
+    </div>
+    {% endif %}
+
+    <form method="POST" action="{{ url_for('start_learning') }}">
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required 
+                   placeholder="Enter your name">
+        </div>
+
+        <div class="form-group">
+            <label for="mode">Learning Mode:</label>
+            <select id="mode" name="mode" required>
+                <option value="learning">Learning Mode </option>
+                <option value="review">Review Mode </option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="pos">Part of Speech:</label>
+            <select id="pos" name="pos" required>
+                {% for pos, cefr_levels in criteria.items() %}
+                <!-- <option value="{{ pos }}">{{ pos|title }} ({{ cefr_levels|length }} words)</option> -->
+                <option value="{{ pos }}">{{ pos|title }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="cefr">Difficulty Level (CEFR):</label>
+            <select id="cefr" name="cefr" required>
+                <option value="A1">A1 (Beginner)</option>
+                <option value="A2">A2 (Elementary)</option>
+                <option value="B1">B1 (Intermediate)</option>
+                <option value="B2">B2 (Upper-Intermediate)</option>
+                <option value="C1">C1 (Advanced)</option>
+                <option value="C2">C2 (Proficient)</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn" style="width: 100%;">
+            🚀 Start Learning
+        </button>
+    </form>
+</div>
+
+<div class="card" style="text-align: center; color: #666;">
+    <h3>💡 How to Use</h3>
+    <p>1. Select your username and learning preferences</p>
+    <p>2. View images and choose the correct word for the blank</p>
+    <p>3. Receive visual feedback for incorrect answers</p>
+    <p>4. Complete 10 questions per session</p>
+</div>
+{% endblock %}
