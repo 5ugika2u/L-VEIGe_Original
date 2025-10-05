@@ -1,4 +1,4 @@
-# 📚 Vocabulary Learning System — Setup & Run (WSL/Windows + Linux/macOS)
+# 📚 L-VEIGe (Learning-Vocabulary Error Image Generation) — Setup & Run (WSL/Windows + Linux/macOS)
 
 An interactive web application for English vocabulary learning. It generates fill‑in‑the‑blank questions paired with COCO images and provides visual feedback for incorrect answers.
 
@@ -246,17 +246,14 @@ export FLASK_DEBUG=False
 * Mobile‑friendly UI
 
 ---
+## Acknowledgments
+This work was supported by **JST SPRING, Grant Number JPMJSP2102**. :contentReference[oaicite:2]{index=2}
 
 ## 📄 License
+- **Code**: MIT License (see [LICENSE](./LICENSE))
+- **Docs & Images (repo)**: CC BY 4.0, unless otherwise noted
+- **COCO images**: Not redistributed in this repository. Please obtain the dataset from the original source and follow its licenses.
+- **AI-generated images**: Use governed by the image provider’s latest terms.
 
-Add your license here.
-
-## 🤝 Contributing
-
-Add contributing guidelines.
-
-## 📞 Support
-
-* Run `python tests/test_system.py` for a quick smoke test
-* Open an issue with full error logs
-* For dependency/Python upgrades, use a branch and validate step by step
+##  🤝Contributing
+See [CONTRIBUTING.md](./CONTRIBUTING.md). We welcome issues and pull requests!
