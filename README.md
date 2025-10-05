@@ -1,10 +1,35 @@
+<h1 align="center">📚 L-VEIGe — Learning-Vocabulary Error Image Generation</h1>
+<p align="center"><b>Interactive English vocabulary learning with visual feedback from error images</b></p>
+
+<p align="center">
+  <a href="#quickstart"><img alt="Get Started" src="https://img.shields.io/badge/Quickstart-5%20min-6f42c1"></a>
+  <img alt="Python" src="https://img.shields.io/badge/Python-3.8-blue">
+  <img alt="Flask" src="https://img.shields.io/badge/Flask-App-000">
+  <img alt="WSL Ready" src="https://img.shields.io/badge/WSL-Ready-success">
+  <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-green.svg"></a>
+</p>
+
+<p align="center">
+  <img src="docs/assets/initial-question.png" alt="Initial question screen" width="49%">
+  <img src="docs/assets/result3.png"         alt="Result (incorrect) screen" width="49%">
+</p>
+<p align="center"><em>Left: Initial (Question) • Right: Result (Incorrect with error image)</em></p>
+
+<div align="center">
+  <a href="#quickstart">Quickstart</a> ·
+  <a href="#features">Features</a> ·
+  <a href="#how-it-works-design-intent">How it works</a> ·
+  <a href="#license">License</a> ·
+  <a href="CONTRIBUTING.md">Contributing</a>
+</div>
+
 # 📚 L-VEIGe (Learning-Vocabulary Error Image Generation) — Setup & Run (WSL/Windows + Linux/macOS)
 
 An interactive web application for English vocabulary learning. It generates fill‑in‑the‑blank questions paired with COCO images and provides visual feedback for incorrect answers.
 
 <p align="center">
-  <img src="docs/assets/initial-question.png" alt="Initial question screen" width="49%">
-  <img src="docs/assets/result3.png"         alt="Result (incorrect answer) screen" width="49%">
+  <img src="docs/assets/initial-question.png" alt="Initial question screen" width="20%">
+  <img src="docs/assets/result3.png"         alt="Result (incorrect answer) screen" width="20%">
 </p>
 <p align="center"><em>Left: Initial (Question) / Right: Result (Incorrect)</em></p>
 
@@ -13,7 +38,7 @@ An interactive web application for English vocabulary learning. It generates fil
 ## How it works (Design intent)
 
 <p align="center">
-  <img src="docs/assets/figure-learning-flow.png" alt="Learner state transitions during error visualization" width="780">
+  <img src="docs/assets/figure-learning-flow.png" alt="Learner state transitions during error visualization" width="480">
 </p>
 
 This system couples **multimedia learning**, **cognitive load minimization**, and **error-based learning**.  
