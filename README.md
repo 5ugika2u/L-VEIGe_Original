@@ -15,13 +15,13 @@
 </p>
 <p align="center"><em>Left: Initial (Question) • Right: Result (Incorrect with error image)</em></p>
 
-<div align="center">
+<!-- <div align="center">
   <a href="#quickstart">Quickstart</a> ·
   <a href="#features">Features</a> ·
   <a href="#how-it-works-design-intent">How it works</a> ·
   <a href="#license">License</a> ·
   <a href="CONTRIBUTING.md">Contributing</a>
-</div>
+</div> -->
 
 <!-- # 📚 L-VEIGe (Learning-Vocabulary Error Image Generation) — Setup & Run (WSL/Windows + Linux/macOS)
 
